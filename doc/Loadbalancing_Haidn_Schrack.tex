@@ -1,0 +1,144 @@
+\documentclass[a4paper]{article}
+
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{fancyhdr} %Package to configure headings and footer
+\usepackage{lastpage} %Needed to display last page (total amount of pages)
+\usepackage{listings}
+
+% pagelayout
+\usepackage[
+top    = 2.75cm,
+bottom = 2.00cm,
+left   = 2.50cm,
+right  = 2.00cm]{geometry}
+\setcounter{secnumdepth}{4}
+
+% header
+\pagestyle{fancy}
+\fancyhead[L]{\today}
+\fancyhead[R]{Load Balancing - Gliederung}
+
+%footer
+\fancyfoot[L]{Haidn, Schrack}
+\fancyfoot[C]{5A HIT}
+\fancyfoot[R]{Seite \thepage/\pageref{LastPage}}
+
+%title page
+\author{Martin Haidn, Nikolaus Schrack}
+\title{Load Balancing - Structure\\SYT - 5A HIT}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	
+	\newpage
+	\tableofcontents
+	
+	\newpage
+	\section{Instruction}
+	\subsection{The Need and Goals for Load Balancing}
+	This section should describe what's the aim of using load distribution and why or respectively where it's needed.
+	\subsection{Use Cases and Examples}
+	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
+	\subsection{Applications}
+	An overview about the common used applications for load distribution.
+	
+	\newpage
+	\section{Basic Concepts}
+	\subsection{Networking Fundamentals}
+	Short description and instruction to the Networking fundamentals and their usage in load balancing.
+	\subsection{Higher Layered Distribution}
+	Description how load distribution works on OSI-Layers six and seven.
+	\subsection{Load-Distribution Methods}
+	Summary of common load distribution Methods, their benefits and disadvantages.
+	
+	\newpage
+	\section{Advanced Concepts}
+	\subsection{Session Persistence}
+	Reasons and benefits of using Session Persistence to track and store session data.
+	\subsection{URL Switching}
+	The flexibility of layer seven load balancing and the included url switching.
+	\subsection{Network-Address Translation}
+	Fast Layer 4 load balancing and the appliance as default gateway.
+	
+	\newpage
+	\section{Scheduling Algorithms}
+	\subsection{Weighted Balance}
+	Ways to guarantee a weighted balance in busy systems.
+	\subsection{Priority}
+	The meaning of priorities concerning the process of load balancing and how to route traffic to a preferred link, as long it's available.
+	\subsection{Overflow}
+	How to prevent traffic flow from slowing down when the connection runs out of available bandwidth.
+	\subsection{Persistance}
+	Eliminate session termination issue for HTTPS, E-banking, and other secure websites.
+	\subsection{Round-Robin}
+	A closer explanation to the scheduling procedure "Round Robin"
+	
+	\newpage
+	\section{Caches}
+	\subsection{Definition}
+	Define what a cache is for when we talk about load balancing.
+	\subsection{Types}
+	The different types of caches and their usage as well as benefits and disadvantages.
+	\subsection{Deployment}
+	Examples and explanation how to deploy load distribution using caches.
+	
+	\newpage
+	\section{Problems}
+	\subsection{Mega Proxy Session}
+	Problems triggered through the use of Mega Proxys on the client site.
+	
+	\newpage
+	\section{Sources}
+	\todo{Please note that this is just an overview about our collected references so far, to find them in the TU-Library. We'll add our last visits during this elaberation.}
+	Titel:    Load balancing servers, firewalls, and caches : [timely, practical, reliable]\\
+	Autor:    Chandra Kopparapu\\
+	Jahr:    2002\\
+	ISBN:    ISBN 0-471-41550-2\\
+	TUWS:    DAT:964, DAT:224\\
+	\\
+	Titel:    Dynamic load balancing : an overview\\
+	Autor:    Arnold R. Krommer ; Christoph W. Ueberhuber\\
+	Jahr:    1992\\
+	ISBN:     -\\
+	TUWS:    DAT:351\\
+	\\
+	Titel:    Dynamischer Lastausgleich in Parallelrechnersystemen : genetische Algorithmen und eine spezielle Rechnerstruktur\\
+	Autor:    Michael Witt\\
+	Jahr:    1997\\
+	ISBN:    -\\
+	TUWS:    -\\
+	\\
+	Titel:    Optimal load balancing in distributed computer systems\\
+	Autor:    Hisao Kameda\\
+	Jahr:    1997\\
+	ISBN:    ISBN 3-540-76130-6\\
+	TUWS:     -\\
+	\\
+	\\
+	Titel:     Server Load Balancing\\
+	Autor:     Tony Bourke\\
+	Jahr:     August 2001\\
+	0-596-00050-2, Order Number: 0502\\
+	200 pages, 34.95 USD\\
+	Link: http://oreilly.com/catalog/serverload/chapter/ch07.html\\
+	\\
+	\\
+	Onlinequellen:\\
+	\\
+	Name:    Optimal Load Balancing in Distributed Computer Systems\\
+	Link:    http://bookzz.org/book/2092081/f777c1\\
+	\\
+	Name:    Spectral Methods for Efficient Load Balancing Strategies\\
+	Link:    http://cs.emis.de/LNI/Dissertation/Dissertation3/GI-Dissertations.03-3.pdf\\
+	\\
+	Name:    Lastverteilung auf dem Konzept des virtuellen Servers\\
+	Link:    http://www.nm.ifi.lmu.de/pub/Fopras/fikr02/PDF-Version/fikr02.pdf\\
+	\\
+	Name: Dynamic Load Balancing and Scheduling\\
+	Link: http://www2.cs.uni-paderborn.de/cs/ag-monien/RESEARCH/LOADBAL/\\
+	\\
+	
+\end{document}
