@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[12p]{article}
 
 \usepackage[english]{babel}
 \usepackage[utf8x]{inputenc}
@@ -30,6 +30,11 @@ right  = 2.00cm]{geometry}
 \title{Load Balancing - Structure\\SYT - 5A HIT}
 \date{\today}
 
+%Glossary
+\usepackage{glossaries}
+\makeglossaries
+\newglossaryentry{mac}{name=MAC, description={Media Access Controll}}
+
 \begin{document}
 	\maketitle
 	
@@ -48,7 +53,9 @@ right  = 2.00cm]{geometry}
 	\newpage
 	\section{Basic Concepts}
 	\subsection{Networking Fundamentals}
-	Short description and instruction to the Networking fundamentals and their usage in load balancing.
+	The OSI model contains seven layers and every single one provides it's own functionality and data.\\
+	If we take a closer look on the deeper layers like data link and network, which is representative for layer two and three, we can see that their header information contains IP and MAC addresses. These addresses can be used to decide where a package has to be send when it's revived by a switch.\\
+	This basic concept of routing packages builds the fundament for load balancing. It's about making a decision if, and where the data has to go. \cite{lb_SFC}
 	\subsection{Higher Layered Distribution}
 	Description how load distribution works on OSI-Layers six and seven.
 	\subsection{Load-Distribution Methods}
@@ -89,6 +96,13 @@ right  = 2.00cm]{geometry}
 	\section{Problems}
 	\subsection{Mega Proxy Session}
 	Problems triggered through the use of Mega Proxys on the client site.
+	
+	\newpage
+	\printglossaries
+	
+	\newpage
+	\bibliographystyle{plain}
+	\bibliography{Loadbalancing_Haidn_Schrack.bib}
 	
 	\newpage
 	\section{Sources}
