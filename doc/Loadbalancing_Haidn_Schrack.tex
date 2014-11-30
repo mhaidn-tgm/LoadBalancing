@@ -44,21 +44,27 @@ right  = 2.00cm]{geometry}
 	\newpage
 	\section{Instruction}
 	
-	The concept of Load Balancing is not new in the server and network space. There are different types of Load Balancing. A Router, for example, distributes the traffic across multiple paths to the same destination. A Server Load Balancer, on the other hand, distributes traffic among server resources rather than network resources.
-	
+	The concept of Load Balancing is not new in the server and network space. There are different types of Load Balancing. A Router, for example, distributes the traffic across multiple paths to the same destination. A Server Load Balancer, on the other hand, distributes traffic among server resources rather then network resources. \cite{lb_SFC}  \\ \\
+	Typically it is used for balancing traffic over multiple servers and acting as one web front-end. The user usually doesn't know about the existence of multiple backend servers because it seems as there is only one server. The processing load is shared across many nodes, rather than just to a single server. Thus the performance during times of high activity increases.
+	\cite{liquidweb}
 	
 	
 	\subsection{The Need and Goals for Load Balancing}
 	%This section should describe what's the aim of using load distribution and why or %respectively where it's needed.
-	 %It is better to use multiple components with load balancing to increace the reliability throguh redundancy. 
-	 
+	 %It is better to use multiple components with load balancing to increace the reliability throguh redundancy. 	 
 	
 	
-	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single recource. 
-	
-	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for e-commerce a slow server can make the users experience really bad. 
-	
-
+	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single resources. \\\\
+	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies loosing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
+	There are two main reasons for Load Balancing: 
+	\begin{enumerate}
+		\item Limiting your points of failure
+		\item Load Distribution
+	\end{enumerate} 
+	\textbf{Limiting your points of failure} is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site is still running.
+	\\\\
+	\textbf{Load Distribution} 
+	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
 	
 	\subsection{Use Cases and Examples}
 	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
