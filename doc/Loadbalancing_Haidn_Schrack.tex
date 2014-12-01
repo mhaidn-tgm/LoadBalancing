@@ -56,21 +56,41 @@ right  = 2.00cm]{geometry}
 	
 	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single resources. \\\\
 	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies loosing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
+	The problem of scaling computer capacity is also important. In the old days, if a server wasn't good enough to run an application they simply bought a more powerful.  Nowadays the Load Balancing systems work with multiple servers. If the traffic becomes more and more, one should just be able to hang another server into the balancing and it should work.\cite{lb_SFC} \\\\
 	There are two main reasons for Load Balancing: 
 	\begin{enumerate}
 		\item Limiting your points of failure
 		\item Load Distribution
 	\end{enumerate} 
-	\textbf{Limiting your points of failure} is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site is still running.
+	\textbf{Limiting your points of failure} is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
 	\\\\
 	\textbf{Load Distribution} 
 	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
-	
+		
 	\subsection{Use Cases and Examples}
 	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
 	\subsection{Applications}
-	An overview about the common used applications for load distribution.
-	
+	%An overview about the common used applications %for load distribution.
+	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC} \\
+	\includegraphics[width=\textwidth]{basic}\cite{lb_SFC} \\\\
+	The grafic shows that the Load Balancer is the connection between the clients and the servers. The Load Blancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
+	Load Balancer have four big applications
+	\begin{enumerate}
+		\item Server load balancing
+		\item Global load balancing
+		\item Firewall load balancing
+		\item Transparent cache switching
+	\end{enumerate} 
+	Server load balancing deals with multiple servers to scale beyond the capacity of one server and to handle a server failure. Global load balancing directs users to different data centers consisting of server farms so they can provide quicker response and handle a data center failure. The Firewall Load balancing can distribute load between multiple firewalls to again, handle a failure of one of them. Transparent cache switching directs traffic to caches to minimize the response time. \\ \\
+	There are three main forms of products for load balancing. 
+	\begin{enumerate}
+		\item Software load-balancing
+		\item Appliances
+		\item Switches
+	\end{enumerate}
+	\textbf{Software load balancing} are products that run on load balancing servers. They have algorithms to coordinate the traffic among them. For example Apache Module mod\_proxy is a popular tool. Nginx would be another tool that allows software load balancing. They are mostly for free which is great if one runs on a low budget.  \\\\ % TODO: kann man noch weiter ausfuehren
+	\textbf{Appliances} are a all-in-one product that include necessary hardware and software to do web switching. It may has some special operating system and custom hardware. For example Cisco has hardware appliances that handle load balancing for you. \\\\ % TODO: More examples ...	
+	\textbf{Switches} have to their traditional functionality in OSI Layer 2/3, are also able to do load balancing on Layer 4-7. Mostly though, they a significant amount of work done by software. For example Zen Load Balancer  and Cisco as well have switches  appliances that handle load balancing for you.
 	\newpage
 	\section{Basic Concepts}
 	\subsection{Networking Fundamentals}
