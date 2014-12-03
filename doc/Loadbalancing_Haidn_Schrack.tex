@@ -157,7 +157,19 @@ right  = 2.00cm]{geometry}
 	\newpage
 	\section{Problems}
 	\subsection{Mega Proxy Session}
-	Problems triggered through the use of Mega Proxys on the client site.
+	The mega proxy session which is also known as mega proxy problem describes the issue of not being able to determine the correct source IP of an user. This can be caused when the client is located behind a proxy server which determines the client connection, changes the source IP to it's own address and opens a new connection to the actual destination IP.\\
+	Most ISPs and enterprises deploy proxy servers in their network to protect their client's identities but this can raise a session-persistence and therefore a load balancing problem on the balancer's side.\\
+	
+	\todo{Scan the image again!!}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/SessionPersistanceProblem.png}
+		\caption{Session persistence problem with megaproxy}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	
+	To avoid this problem the balancer can not longer rely on the source IP address to identify the user and has to adapt it's balancing concept.\\
+	The virtual sources of the proxies can be grouped to treat them as one. With this method the balancer is still able to maintain session persistence by directing all requests to a single real server. If this method is reasonable has to be decided considering the traffic scale in your network. On one hand it solves the problem of session persistence but on the other hand it can mess up your load distribution concept because all requests from the proxy network get forwarded to the same server.
 	
 	\newpage
 	\printglossaries
