@@ -113,11 +113,22 @@ right  = 2.00cm]{geometry}
 	TCP SYN is the first request the clients sends to the server if he wants to establish a new connection.\\
 	It contains the source IP address and port to identify the user and also the destination Ip and port to identify the server.\\
 	\\
-	\textbf{Application Request}
+	\textbf{Application Request}\\
 	If the user calls an application or a method on the server the request has to be defined in the send packages.\\
 	This information is used by the balancer to forward the request to the right providing server.
+	
 	\subsection{URL Switching}
-	The flexibility of layer seven load balancing and the included url switching.
+	%The flexibility of layer seven load balancing and the included url switching.
+	Services which provide a huge amount of information may have the problem that a single server cant hold the whole available content. The content has to be divided among a few servers and therefore URL Switching is used.\\
+	Servers which are responsible for the same kind of information can be combined to a group. This makes it more easy to address the distributed contents and map the appropriate requests.
+	The requested content from the client gets identified by names or values in the URL. This is accomplished by specifying the URL switching policies on the load balancer.\\
+	\\
+	\textbf{Seperating Static and Dynamic Content}\\
+	Another way of URL switching is to separate the static and dynamic content in server farms. Static content is defined as information that does not change very often and can be separated from the dynamic content which may has to be generated per request.\\
+	\\
+	\textbf{Current URL and Cookie Switching}\\
+	After our balancer has detected what server group to choose because of the requested URL we might need a way to stay in communication with the content server. Therefore a cookie-read method can be used whereby a cookie gets inserted from the server which can be read from the balancer.
+	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy.
 	\subsection{Network-Address Translation}
 	Fast Layer 4 load balancing and the appliance as default gateway.
 	
