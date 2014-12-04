@@ -56,27 +56,41 @@ right  = 2.00cm]{geometry}
 	
 	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single resources. \\\\
 	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies loosing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
-	The problem of scaling computer capacity is also important. In the old days, if a server wasn't good enough to run an application they simply bought a more powerful.  Nowadays the Load Balancing systems work with multiple servers. If the traffic becomes more and more, one should just be able to hang another server into the balancing and it should work.\cite{lb_SFC} \\\\
-	There are two main reasons for Load Balancing: 
+	There are a couple challenges that Load Balancing tries to solve. \\\\ 
+	\textbf{Scalability.} The problem of scaling computer capacity is huge. In the old days, if a server wasn't good enough to run an application, they simply bought a more powerful. Nowadays the Load Balancing systems work with multiple servers. It uses load-distribution algorithms to distribute the client request among all the servers.
+	If the traffic becomes more and more, another server can be put into the system easily \cite{lb_SFC} \\\\
+	\textbf{Availability.} The health of the servers and application is check by the Load Balancer continuously. If they fail the health check they don't get any request from the Load Balancer until they are fixed. The requests are sent to healthy servers.\cite{lb_SFC}\\\\ 
+	\textbf{Manageability.} When software on servers gets upgraded they need to be taken down. Although this can be scheduled so it doesn't collate with the off-peak hours it needs downtime. Some business can't afford downtime and if your application is used around the world there is usually always a lot of traffic. A Load Balancer can simply give the request to another server and the wait for the connection that still exists to be closed until he safely shut downs the server that needs an upgrade. 
+	Load Balancer can also help manage with large amounts of content, known as content management. Some Web servers have so much content that can't fit into one server. The application can be distributed into multiple servers.\cite{lb_SFC}
+	
+	\newpage
+	\textbf{Security.} Since Load Balancer are the front end of a server farm they can protect the servers from malicious users. They normally have security features that can stop certain types of attacks. Usually the back-end servers have a private IP address so they aren't rout-able on the Internet. Anyone that is in the public Internet must go through a network address translation (NAT) in order to communicate with the servers. Because the Load Balancer can do the NAT, every connection is forced to go through it.\cite{lb_SFC} \\\\
+	There are two main reasons for Load Balancing:
 	\begin{enumerate}
 		\item Limiting your points of failure
 		\item Load Distribution
 		\\
 	\end{enumerate}
+	
 	\textbf{Limiting your points of failure}\\
 	Limiting your points of failure is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
 	\\\\
 	\textbf{Load Distribution}\\ 
 	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
 	
-	\newpage	
 	\subsection{Use Cases and Examples}
 	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
 	
 	\subsection{Applications}
 	%An overview about the common used applications %for load distribution.
-	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC} \\
-	\includegraphics[width=\textwidth]{basic}\cite{lb_SFC} \\\\
+	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC}\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/basic.png}
+		\caption{Load balancer's connections between servers and client}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	
 	The grafic shows that the Load Balancer is the connection between the clients and the servers. The Load Blancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
 	Load Balancer have four big applications
 	\begin{enumerate}
@@ -96,6 +110,9 @@ right  = 2.00cm]{geometry}
 	\textbf{Software load balancing} are products that run on load balancing servers. They have algorithms to coordinate the traffic among them. For example Apache Module mod\_proxy is a popular tool. Nginx would be another tool that allows software load balancing. They are mostly for free which is great if one runs on a low budget.  \\\\ % TODO: kann man noch weiter ausfuehren
 	\textbf{Appliances} are a all-in-one product that include necessary hardware and software to do web switching. It may has some special operating system and custom hardware. For example Cisco has hardware appliances that handle load balancing for you. \\\\ % TODO: More examples ...	
 	\textbf{Switches} have to their traditional functionality in OSI Layer 2/3, are also able to do load balancing on Layer 4-7. Mostly though, they a significant amount of work done by software. For example Zen Load Balancer  and Cisco as well have switches  appliances that handle load balancing for you.
+	
+	\subsection{Use Cases and Examples}
+	%This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples. S61
 	
 	\newpage
 	\section{Basic Concepts}
@@ -148,16 +165,38 @@ right  = 2.00cm]{geometry}
 	
 	\newpage
 	\section{Scheduling Algorithms}
-	\subsection{Weighted Balance}
-	Ways to guarantee a weighted balance in busy systems.
-	\subsection{Priority}
-	The meaning of priorities concerning the process of load balancing and how to route traffic to a preferred link, as long it's available.
-	\subsection{Overflow}
-	How to prevent traffic flow from slowing down when the connection runs out of available bandwidth.
-	\subsection{Persistance}
-	Eliminate session termination issue for HTTPS, E-banking, and other secure websites.
 	\subsection{Round-Robin}
-	A closer explanation to the scheduling procedure "Round Robin"
+	This is one of the simplest scheduling algorithms. The load distribution happens on every server equally. If this method is used all the servers should have the same capacity. If this is not the case it can mean that a less powerful server receives the next request even though it isn't able to manage it. This could case a overload on the weaker servers in the system. 
+	
+	\subsection{Weighed Robin-Round}
+	This scheduling algorithms is based on Robin Round. Additionally it has a weight distribution on each server. The administer gives the servers a certain weight and including this, the request are spread. This method takes in account that the servers may have different performance. 
+		
+	\subsection{Last Connection}
+	The last two algorithms didn't include the length of the connections. If a weak server only gets a certain amount of weight but those requests stay longer, it still can have an overload. To avoid this problem this method gives the requests to the server with the least connections. "The server  in the cluster with the least number of active connections automatically receives the next  request. Basically, the same principle applies here as for the simple round robin: The servers  related to a Virtual Service should ideally have the similar resource capacities."\cite{schedu} However, in low traffic rates, it is now balanced out because the first server will be preferred. This happens due to the equality of the servers. The first sever will always be selected as long as he has continually active traffic. 
+	
+	\subsection{Least Connected Slow- Start Time}
+	This algorithm provides a "ramp-up time" for new servers in the system. When a new sever is added, a time can be configured in which it slowly gets increasingly more requests. This way the server doesn't get overloaded by a flood of connections upon startup. The downside of this method is that it takes a while until the full potential of a new server can be used. This can be a problem if you need to add power quickly. 
+	
+	\subsection{Weighed Least Connection}
+	This method is a combination of Last Connection and Weighted Robin Round algorithms. The Number of connection and the weight which the administer gave the servers are taking in account. The next request goes to the server with the smallest ratio between weight and connections. "The number of active connections combined with the various weights defined by the  administrator generally provides a very balanced utilization of the servers, as it employs the  advantages of both worlds. "\cite{schedu}
+	
+	\subsection{Agent Based Adaptive Balancing}
+	Other then the methods above this contains an adaptive logic. It checks at regular intervals the servers for their traffic load. The Load Balancer periodically gets a file from the server in which their work load is stated. This works with HTTP GET function. "Each server machine should  provide a file that contains a numeric value in the range between 0 and 99 representing the  actual load on this server (0 = idle, 99 = overload,101 = failed,102 = administratively disabled)."\cite{schedu} With this information  including the weight each server has the Load Balancer can handle the traffic between the severs very sufficient. Although during a period of very low traffic the Load Balancer switches to Weighted Robin Round. This is because otherwise it would result in uncontrolled distribution.
+	
+	\subsection{Multiple Queue Scheduling}
+	This method separates the queue into two different queues. This way the request is divided and can be worked on at the same time and later being put back together. For example a queue is cut into foreground and background task. Each of these queue can have their own scheduling algorithms. So the first one can use the Robin Round and second one First Come First Server. However, the two queues also have to be scheduled and put back together. 
+	
+	
+	%\subsection{Weighted Balance}
+	%Ways to guarantee a weighted balance in busy systems.
+	%\subsection{Priority}
+	%The meaning of priorities concerning the process of load balancing and how to route traffic to a preferred link, as long it's available.
+	%\subsection{Overflow}
+	%How to prevent traffic flow from slowing down when the connection runs out of available bandwidth.
+	%\subsection{Persistance}
+	%Eliminate session termination issue for HTTPS, E-banking, and other secure websites.
+	%\subsection{Round-Robin}
+	%A closer explanation to the scheduling procedure "Round Robin"
 	
 	\newpage
 	\section{Caches}
