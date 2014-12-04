@@ -1,0 +1,60 @@
+\ifglsentryexists{ADC}{}%
+{%
+\gls@defglossaryentry{ADC}%
+{%
+name={ADC},%
+sort={ADC},%
+type={main},%
+first={ADC},%
+firstplural={ADCs},%
+text={ADC},%
+plural={ADCs},%
+description={Application Delivery Controller},%
+descriptionplural={Application Delivery Controller},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{WWW}{}%
+{%
+\gls@defglossaryentry{WWW}%
+{%
+name={WWW},%
+sort={WWW},%
+type={main},%
+first={WWW},%
+firstplural={WWWs},%
+text={WWW},%
+plural={WWWs},%
+description={World Wide Web},%
+descriptionplural={World Wide Web},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

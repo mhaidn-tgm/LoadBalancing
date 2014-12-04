@@ -18,7 +18,7 @@ right  = 2.00cm]{geometry}
 % header
 \pagestyle{fancy}
 \fancyhead[L]{\today}
-\fancyhead[R]{Load Balancing - Gliederung}
+\fancyhead[R]{Load Balancing - SYT}
 
 %footer
 \fancyfoot[L]{Haidn, Schrack}
@@ -27,7 +27,7 @@ right  = 2.00cm]{geometry}
 
 %title page
 \author{Martin Haidn, Nikolaus Schrack}
-\title{Load Balancing - Structure\\SYT - 5A HIT}
+\title{\Huge{Load Balancing}\\\Large{SYT - 5A HIT}}
 \date{\today}
 
 %Glossary
@@ -91,14 +91,21 @@ right  = 2.00cm]{geometry}
 	\textbf{Software load balancing} are products that run on load balancing servers. They have algorithms to coordinate the traffic among them. For example Apache Module mod\_proxy is a popular tool. Nginx would be another tool that allows software load balancing. They are mostly for free which is great if one runs on a low budget.  \\\\ % TODO: kann man noch weiter ausfuehren
 	\textbf{Appliances} are a all-in-one product that include necessary hardware and software to do web switching. It may has some special operating system and custom hardware. For example Cisco has hardware appliances that handle load balancing for you. \\\\ % TODO: More examples ...	
 	\textbf{Switches} have to their traditional functionality in OSI Layer 2/3, are also able to do load balancing on Layer 4-7. Mostly though, they a significant amount of work done by software. For example Zen Load Balancer  and Cisco as well have switches  appliances that handle load balancing for you.
+	
 	\newpage
 	\section{Basic Concepts}
 	\subsection{Networking Fundamentals}
 	The OSI model contains seven layers and every single one provides it's own functionality and data.\\
 	If we take a closer look on the deeper layers like data link and network, which is representative for layer two and three, we can see that their header information contains IP and MAC addresses. These addresses can be used to decide where a package has to be send when it's revived by a switch.\\
 	This basic concept of routing packages builds the fundament for load balancing. It's about making a decision if, and where the data has to go. \cite{lb_SFC}
+	
 	\subsection{Higher Layered Distribution}
-	Description how load distribution works on OSI-Layers six and seven.
+	\textbf{Layer-7 Switching}\\
+	Layer-7 switching, which is also known as application-level load balancing, describes a way of load distribution based on the content of the client request. Parsing the requests causes a high overhead on the balancer's side, so it's scalability is limited.\\
+	The appliances which are responsible to perform layer 7 load balancing are called Application Delivery Controllers (\gls{ADC}). \gls{ADC}'s presents a "virtual sever" to the world wide web (\gls{WWW}),accepts requests and distributes them to the right application server, determined over the use of application data.\\
+	\\
+	The knowledge about the requested data allows to serve specific types of content. A useful distribution of content are server- and client-side-scipts for example. \cite{AppLayerBalancing}
+	
 	\subsection{Load-Distribution Methods}
 	Summary of common load distribution Methods, their benefits and disadvantages.
 	
@@ -129,6 +136,7 @@ right  = 2.00cm]{geometry}
 	\textbf{Current URL and Cookie Switching}\\
 	After our balancer has detected what server group to choose because of the requested URL we might need a way to stay in communication with the content server. Therefore a cookie-read method can be used whereby a cookie gets inserted from the server which can be read from the balancer.
 	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy.
+	
 	\subsection{Network-Address Translation}
 	Fast Layer 4 load balancing and the appliance as default gateway.
 	
@@ -172,6 +180,14 @@ right  = 2.00cm]{geometry}
 	The virtual sources of the proxies can be grouped to treat them as one. With this method the balancer is still able to maintain session persistence by directing all requests to a single real server. If this method is reasonable has to be decided considering the traffic scale in your network. On one hand it solves the problem of session persistence but on the other hand it can mess up your load distribution concept because all requests from the proxy network get forwarded to the same server.
 	
 	\newpage
+	\newglossaryentry{ADC} {
+		name= ADC,
+		description= {Application Delivery Controller}
+	}
+	\newglossaryentry{WWW} {
+		name= WWW,
+		description= {World Wide Web}
+	}
 	\printglossaries
 	
 	\newpage
