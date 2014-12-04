@@ -98,6 +98,10 @@ right  = 2.00cm]{geometry}
 	
 	\subsection{Use Cases and Examples}
 	%This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples. S61
+	When big companies face the problem of Load Balancing, they have to focus on every aspect of their IT infrastructure. How would a business like \textit{Google} handle such a challenge. They have millions of request every day and need to have their service available 24/7. \\\\
+	Let's look at the website request "google.at".\\
+	\includegraphics[width=\textwidth]{example}
+ 	The DNS Server answers with a list of IP addresses of Load Balancers. In this example it gives three IP's back. The browser would use the first one by default. The order of the list varies at every call which is already kind of a load balancing because the traffic is distributed among the list of servers. At the server centers of big companies, the application is spread amongst the servers. So not every server can do everything. The Load Balancer can look into the request and then give it to the right switch, which has servers that can answer the request. The Load Balancers are the only one with a public IP. The servers that actually answer the request are in the private network. The way back to the client can either go through the Load Balancer or from the server to a NAT device an then to the client.
 	
 	\newpage
 	\section{Basic Concepts}
