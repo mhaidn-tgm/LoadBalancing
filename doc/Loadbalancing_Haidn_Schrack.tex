@@ -192,7 +192,16 @@ right  = 2.00cm]{geometry}
 	
 	\newpage
 	\section{Queues}
-	hier werden die quees noch vorgestellt ...
+	
+	Queues are a way to effectively manage writes. When a system is simple, with minimal precessing loads and a small database, writing can be pretty fast.  However, when the system gets complex, writes may take a long time. The data may have to be written in several places or indexes which under a high load, can hurt performance. \\\\
+	In the graphic below is shown how it works without queues. \\\\
+	\includegraphics[width=0.6\textwidth]{img/queue1} \cite{cache} \\\\
+	The clients have to wait for the server to answer until they can continue doing something else. This is a synchronous behavior that tremendously degrades the clients performance. The solution to this problem are queues. They abstract the client's request from the actual work performed. \\\\
+	\includegraphics[width=0.6\textwidth]{img/queue2} \cite{cache} \\\\
+	As you can see, the requests are simply put in order as you would expect it form a queue. Then they are run by the server. Queues enable the client to work in an asynchronous manner, because they don't wait for the answer. They get a message acknowledging the task was received and then they can check periodically if the task has completed. Queues also give protection from server outages and failures. It is quite easy to create a robust queue that is able to retry request. 
+
+	 %There are quite a few open source queues like RabbitMQ, ActiveMQ, BeanstalkD, but some also use services like Zookeeper, or even data stores like Redis.
+	
 	\newpage
 	\section{Scheduling Algorithms}
 	%\subsection{Weighted Balance}
