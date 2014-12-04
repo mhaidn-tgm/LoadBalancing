@@ -61,14 +61,18 @@ right  = 2.00cm]{geometry}
 	\begin{enumerate}
 		\item Limiting your points of failure
 		\item Load Distribution
-	\end{enumerate} 
-	\textbf{Limiting your points of failure} is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
+		\\
+	\end{enumerate}
+	\textbf{Limiting your points of failure}\\
+	Limiting your points of failure is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
 	\\\\
-	\textbf{Load Distribution} 
+	\textbf{Load Distribution}\\ 
 	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
-		
+	
+	\newpage	
 	\subsection{Use Cases and Examples}
 	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
+	
 	\subsection{Applications}
 	%An overview about the common used applications %for load distribution.
 	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC} \\
@@ -80,7 +84,8 @@ right  = 2.00cm]{geometry}
 		\item Global load balancing
 		\item Firewall load balancing
 		\item Transparent cache switching
-	\end{enumerate} 
+	\end{enumerate}
+	\newpage 
 	Server load balancing deals with multiple servers to scale beyond the capacity of one server and to handle a server failure. Global load balancing directs users to different data centers consisting of server farms so they can provide quicker response and handle a data center failure. The Firewall Load balancing can distribute load between multiple firewalls to again, handle a failure of one of them. Transparent cache switching directs traffic to caches to minimize the response time. \\ \\
 	There are three main forms of products for load balancing. 
 	\begin{enumerate}
@@ -137,6 +142,7 @@ right  = 2.00cm]{geometry}
 	After our balancer has detected what server group to choose because of the requested URL we might need a way to stay in communication with the content server. Therefore a cookie-read method can be used whereby a cookie gets inserted from the server which can be read from the balancer.
 	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy.
 	
+	\newpage
 	\subsection{Network-Address Translation}
 	Fast Layer 4 load balancing and the appliance as default gateway.
 	
