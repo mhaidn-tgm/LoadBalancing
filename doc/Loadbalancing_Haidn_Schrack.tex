@@ -61,22 +61,36 @@ right  = 2.00cm]{geometry}
 	If the traffic becomes more and more, another server can be put into the system easily \cite{lb_SFC} \\\\
 	\textbf{Availability.} The health of the servers and application is check by the Load Balancer continuously. If they fail the health check they don't get any request from the Load Balancer until they are fixed. The requests are sent to healthy servers.\cite{lb_SFC}\\\\ 
 	\textbf{Manageability.} When software on servers gets upgraded they need to be taken down. Although this can be scheduled so it doesn't collate with the off-peak hours it needs downtime. Some business can't afford downtime and if your application is used around the world there is usually always a lot of traffic. A Load Balancer can simply give the request to another server and the wait for the connection that still exists to be closed until he safely shut downs the server that needs an upgrade. 
-	Load Balancer can also help manage with large amounts of content, known as content management. Some Web servers have so much content that can't fit into one server. The application can be distributed into multiple servers.\cite{lb_SFC}\\\\
+	Load Balancer can also help manage with large amounts of content, known as content management. Some Web servers have so much content that can't fit into one server. The application can be distributed into multiple servers.\cite{lb_SFC}
+	
+	\newpage
 	\textbf{Security.} Since Load Balancer are the front end of a server farm they can protect the servers from malicious users. They normally have security features that can stop certain types of attacks. Usually the back-end servers have a private IP address so they aren't rout-able on the Internet. Anyone that is in the public Internet must go through a network address translation (NAT) in order to communicate with the servers. Because the Load Balancer can do the NAT, every connection is forced to go through it.\cite{lb_SFC} \\\\
 	There are two main reasons for Load Balancing:
 	\begin{enumerate}
 		\item Limiting your points of failure
 		\item Load Distribution
-	\end{enumerate} 
-	\textbf{Limiting your points of failure} is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a probelm in one of them the site still runs. This helps to avoid one point of failure. 
+		\\
+	\end{enumerate}
+	
+	\textbf{Limiting your points of failure}\\
+	Limiting your points of failure is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
 	\\\\
-	\textbf{Load Distribution} 
+	\textbf{Load Distribution}\\ 
 	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
-			
+	
+	\subsection{Use Cases and Examples}
+	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
+	
 	\subsection{Applications}
 	%An overview about the common used applications %for load distribution.
-	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC} \\
-	\includegraphics[width=\textwidth]{basic}\cite{lb_SFC} \\\\
+	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC}\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/basic.png}
+		\caption{Load balancer's connections between servers and client}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	
 	The grafic shows that the Load Balancer is the connection between the clients and the servers. The Load Blancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
 	Load Balancer have four big applications
 	\begin{enumerate}
@@ -84,7 +98,8 @@ right  = 2.00cm]{geometry}
 		\item Global load balancing
 		\item Firewall load balancing
 		\item Transparent cache switching
-	\end{enumerate} 
+	\end{enumerate}
+	\newpage 
 	Server load balancing deals with multiple servers to scale beyond the capacity of one server and to handle a server failure. Global load balancing directs users to different data centers consisting of server farms so they can provide quicker response and handle a data center failure. The Firewall Load balancing can distribute load between multiple firewalls to again, handle a failure of one of them. Transparent cache switching directs traffic to caches to minimize the response time. \\ \\
 	There are three main forms of products for load balancing. 
 	\begin{enumerate}
@@ -148,6 +163,7 @@ right  = 2.00cm]{geometry}
 	After our balancer has detected what server group to choose because of the requested URL we might need a way to stay in communication with the content server. Therefore a cookie-read method can be used whereby a cookie gets inserted from the server which can be read from the balancer.
 	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy.
 	
+	\newpage
 	\subsection{Network-Address Translation}
 	Fast Layer 4 load balancing and the appliance as default gateway.
 	
@@ -213,6 +229,7 @@ right  = 2.00cm]{geometry}
 	The virtual sources of the proxies can be grouped to treat them as one. With this method the balancer is still able to maintain session persistence by directing all requests to a single real server. If this method is reasonable has to be decided considering the traffic scale in your network. On one hand it solves the problem of session persistence but on the other hand it can mess up your load distribution concept because all requests from the proxy network get forwarded to the same server.
 	
 	\newpage
+	\listoffigures
 	\newglossaryentry{ADC} {
 		name= ADC,
 		description= {Application Delivery Controller}
