@@ -54,7 +54,7 @@ right  = 2.00cm]{geometry}
 	 %It is better to use multiple components with load balancing to increace the reliability throguh redundancy. 	 
 	
 	
-	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single resources. \\\\
+	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximize throughput, minimize response time and try not to overload any single resources. \\\\
 	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce, a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies, losing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
 	There are a couple challenges that Load Balancing tries to solve. \\\\ 
 	\textbf{Scalability.} The problem of scaling computer capacity is huge. In the old days, if a server wasn't good enough to run an application, they simply bought a more powerful. Nowadays the Load Balancing systems work with multiple servers. It uses load-distribution algorithms to distribute the client request among all the servers.
@@ -84,7 +84,7 @@ right  = 2.00cm]{geometry}
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/basic.png}
-		\caption{Load balancer's connections between servers and client}
+		\caption{Load balancer's connections between servers and client\cite{lb_SFC}}
 		%\label{fig:MegaProxyProblem}
 	\end{figure}\\\\
 	The graphic shows that the Load Balancer is the connection between the clients and the servers. The Load Balancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
@@ -110,7 +110,12 @@ right  = 2.00cm]{geometry}
 	%This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples. S61
 	When big companies face the problem of Load Balancing, they have to focus on every aspect of their IT infrastructure. How would a business like \textit{Google} handle such a challenge? They have millions of request every day and need to have their service available 24/7. \\\\
 	Let's look at the website request "google.at".\\
-	\includegraphics[width=\textwidth]{img/example}
+		\begin{figure}[h!]
+			\centering
+			\includegraphics[width=0.7\textwidth]{img/example}
+			\caption{How Load Balancing works in the big picture}
+			%\label{fig:MegaProxyProblem}
+		\end{figure}\\\\
  	The DNS Server answers with a list of IP addresses of Load Balancers. In this example it gives three IP's back. The browser would use the first one by default. The order of the list varies at every call which is already kind of a load balancing because the traffic is distributed among the list of servers. At the server centers of big companies, the application is spread amongst the servers. So not every server can do everything. The Load Balancer can look into the request and then give it to the right switch, which has servers that can answer the request. The Load Balancers are the only one with a public IP. The servers that actually answer the request are in the private network. The way back to the client can either go through the Load Balancer or from the server to a NAT device an then to the client.
 	
 	\newpage
@@ -199,34 +204,74 @@ right  = 2.00cm]{geometry}
 	
 	Caches are a lot of faster than a normal database request. It takes advantage of a simple idea: recently requested data is likely to be requested again. A cache has limited amount of space but it is faster and contains recently accessed items. They can be used at all levels in architecture, but mostly at the front-end so they can answer quickly and don't get in the way of the lower levels. \\\\
 	This following graphic shows the connection between cash, server and database. \\\\
-	\includegraphics[width=0.7\textwidth]{img/cache1} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{img/cache1}
+		\caption{One Cache with a Database \cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	\\\\
 	The node checks its cache and sees if the data is there. If it isn't, it queries it from the database. Now this is great but for most applications there are multiple Request Nodes. \\\\
-	\includegraphics[width=0.5\textwidth]{img/cache2} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.4\textwidth]{img/cache2}
+		\caption{Multiple Cache with a Database \cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	\\\\
 	As seen in the graphic above, we now have multiple servers with caches. But when the Load Balancer randomly distributes the request to the nodes, the same request will go to different nodes. Therefore we would have a lot of cache misses. To handle this problem we there are two strategies: Global and Distributed Caches. 
 	
 	\subsection{Global Cache}
 	In the global cache, all the nodes have the same cache. The nodes request the cache like it is a local one. The disadvantage of this method is, that a single cache gets overwhelmed by the numbers of requests and clients easier. However, in some architectures it can be very effective. For example with specialized hardware that make the cache very fast, or a fixed data sheet that is cached. \\\\
 	Following graphic shows how this looks works: \\\\
-	\includegraphics[width=0.6\textwidth]{img/global} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.4\textwidth]{img/global}
+		\caption{Global Cache where the Cache pulls from the database \cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
 	When a request comes the node looks into the global cache. If it isn't there, the global cache retrieves it from the database. Note that the cache itself queries the data. \\\\
 	There is a second way to do this.\\\\
-	 \includegraphics[width=0.6\textwidth]{img/global1} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.4\textwidth]{img/global1}
+		\caption{Global Cache where the Nodes pulls from the database\cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
 	Now the node request the data when it isn't in the cache and then it goes to the cache.\\\\
 	Mostly the first type is used, because if the nodes want the same data, they all query it from the database, instead of just the global cache.
 
 	\subsection{Distributed Cache}
 	In a distributed cache, every node has its own part of the cache. \textit{"...if a refrigerator acts as a cache to the grocery store, a distributed cache is like putting your food in several locations-your fridge, cupboards, and lunch box-convenient locations for retrieving snacks from, without a trip to the store."}\cite{cache} Usually the cache is divided up using a consistent hashing function. If the node looks for a certain piece of data it can find it through the hash key. In this case the nodes send the request to the node with the right cache.\\\\
-	 \includegraphics[width=0.6\textwidth]{img/distrib} \cite{cache} \\\\
-	An advantage of this method is that the distributed cache increases with ever node that is added to the pool.
+	 	\begin{figure}[h!]
+	 		\centering
+	 		\includegraphics[width=0.5\textwidth]{img/distrib}
+	 		\caption{Distributed Cache\cite{cache}}
+	 		%\label{fig:MegaProxyProblem}
+	 	\end{figure}
+	 	\\\\
+	One advantage of this method is that the distributed cache increases with ever node that is added to the pool.
 	
 	\newpage
 	\section{Queues}
 	
 	Queues are a way to effectively manage writes. When a system is simple, with minimal precessing loads and a small database, writing can be pretty fast.  However, when the system gets complex, writes may take a long time. The data may have to be written in several places or indexes which under a high load, can hurt performance. \\\\
 	In the graphic below is shown how it works without queues. \\\\
-	\includegraphics[width=0.6\textwidth]{img/queue1} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{img/queue1}
+		\caption{System without Queues\cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	\\\\	
 	The clients have to wait for the server to answer until they can continue doing something else. This is a synchronous behavior that tremendously degrades the clients performance. The solution to this problem are queues. They abstract the client's request from the actual work performed. \\\\
-	\includegraphics[width=0.6\textwidth]{img/queue2} \cite{cache} \\\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.5\textwidth]{img/queue2}
+		\caption{System with Queues\cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}	
+	\\\\
 	As you can see, the requests are simply put in order as you would expect it form a queue. Then they are run by the server. Queues enable the client to work in an asynchronous manner, because they don't wait for the answer. They get a message acknowledging the task was received and then they can check periodically if the task has completed. Queues also give protection from server outages and failures. It is quite easy to create a robust queue that is able to retry request. 
 
 	 %There are quite a few open source queues like RabbitMQ, ActiveMQ, BeanstalkD, but some also use services like Zookeeper, or even data stores like Redis.
