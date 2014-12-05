@@ -45,7 +45,7 @@ right  = 2.00cm]{geometry}
 	\section{Instruction}
 	
 	The concept of Load Balancing is not new in the server and network space. There are different types of Load Balancing. A Router, for example, distributes the traffic across multiple paths to the same destination. A Server Load Balancer, on the other hand, distributes traffic among server resources rather then network resources. \cite{lb_SFC}  \\ \\
-	Typically it is used for balancing traffic over multiple servers and acting as one web front-end. The user usually doesn't know about the existence of multiple backend servers because it seems as there is only one server. The processing load is shared across many nodes, rather than just to a single server. Thus the performance during times of high activity increases.
+	Typically it is used for balancing traffic over multiple servers and acting as one web front-end. The user usually doesn't know about the existence of multiple backend servers because it seems as there is only one server. The processing load is shared across many nodes, rather than just a single. Thus the performance during times of high activity increases.
 	\cite{liquidweb}
 	
 	
@@ -55,11 +55,11 @@ right  = 2.00cm]{geometry}
 	
 	
 	The main goal of Load Balancing is to distribute workload across resources. It is suppose to optimize the traffic, maximaize throughput, minimize response time and try not to overload any single resources. \\\\
-	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies loosing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
+	Since the Internet and Intranet have gotten so important for businesses, Load Balancing has become a very essential component for networks and servers. If the network goes down or works poorly, it can critically damage a business. Especially for companies with e-commerce, a long respond time or in the worst case an outage would leave frustrated customers and huge money loss. For other companies, losing access to email would have devastating impact on their business.  \cite{lb_SFC} \\\\
 	There are a couple challenges that Load Balancing tries to solve. \\\\ 
 	\textbf{Scalability.} The problem of scaling computer capacity is huge. In the old days, if a server wasn't good enough to run an application, they simply bought a more powerful. Nowadays the Load Balancing systems work with multiple servers. It uses load-distribution algorithms to distribute the client request among all the servers.
-	If the traffic becomes more and more, another server can be put into the system easily \cite{lb_SFC} \\\\
-	\textbf{Availability.} The health of the servers and application is check by the Load Balancer continuously. If they fail the health check they don't get any request from the Load Balancer until they are fixed. The requests are sent to healthy servers.\cite{lb_SFC}\\\\ 
+	If the traffic becomes more and more, another server can be put into the system easily. \cite{lb_SFC} \\\\
+	\textbf{Availability.} The health of the servers and application is check by the Load Balancer continuously. If they fail the health check they don't get any request from the Load Balancer until they are fixed. The requests are sent to healthy servers. \cite{lb_SFC} \\\\ 
 	\textbf{Manageability.} When software on servers gets upgraded they need to be taken down. Although this can be scheduled so it doesn't collate with the off-peak hours it needs downtime. Some business can't afford downtime and if your application is used around the world there is usually always a lot of traffic. A Load Balancer can simply give the request to another server and the wait for the connection that still exists to be closed until he safely shut downs the server that needs an upgrade. 
 	Load Balancer can also help manage with large amounts of content, known as content management. Some Web servers have so much content that can't fit into one server. The application can be distributed into multiple servers.\cite{lb_SFC}
 	
@@ -73,25 +73,21 @@ right  = 2.00cm]{geometry}
 	\end{enumerate}
 	
 	\textbf{Limiting your points of failure}\\
-	Limiting your points of failure is essential for every IT Department. The uptime increases by the limitation of available points of failure. "If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up." \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
+	Limiting your points of failure is essential for every IT Department. The uptime increases by the limitation of available points of failure. \textit{"If you load balance between two or more identical nodes, in the event that one of the nodes in your cluster experiences any kind of hardware or software failure the traffic can be redistributed to the other nodes keeping your site up."} \cite{liquidweb} Those identical servers can independently handle the traffic. If there is a failure in one of them the site still runs.
 	\\\\
 	\textbf{Load Distribution}\\ 
 	A single server configuration can only hold a certain amount of traffic, even the most robust, high-end server. But at the traffic peaks of the application it still needs to work just fine. As website grows popularity, multiple servers with Load Balancing are necessary. \cite{liquidweb}
-	
-	\subsection{Use Cases and Examples}
-	This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples.
-	
+		
 	\subsection{Applications}
 	%An overview about the common used applications %for load distribution.
-	With the rise of the Internet, the network becomes very important. "As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"\cite{lb_SFC}\\
+	With the rise of the Internet, the network becomes very important. \textit{"As the Internet connects the world and the Intranet becomes the operational backbone for businesses, the IT infrastructure can be thought of as two types of equipment: computer that function as a client and/or a server, and switches/routers that connect the computers"} \cite{lb_SFC}\\
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/basic.png}
 		\caption{Load balancer's connections between servers and client}
 		%\label{fig:MegaProxyProblem}
-	\end{figure}
-	
-	The grafic shows that the Load Balancer is the connection between the clients and the servers. The Load Blancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
+	\end{figure}\\\\
+	The graphic shows that the Load Balancer is the connection between the clients and the servers. The Load Balancer understands many higher-layer protocols, so they can communicate with servers intelligently. They also understand networking protocols, so they can work with the network effectively.\\\\
 	Load Balancer have four big applications
 	\begin{enumerate}
 		\item Server load balancing
@@ -99,7 +95,6 @@ right  = 2.00cm]{geometry}
 		\item Firewall load balancing
 		\item Transparent cache switching
 	\end{enumerate}
-	\newpage 
 	Server load balancing deals with multiple servers to scale beyond the capacity of one server and to handle a server failure. Global load balancing directs users to different data centers consisting of server farms so they can provide quicker response and handle a data center failure. The Firewall Load balancing can distribute load between multiple firewalls to again, handle a failure of one of them. Transparent cache switching directs traffic to caches to minimize the response time. \\ \\
 	There are three main forms of products for load balancing. 
 	\begin{enumerate}
@@ -113,6 +108,10 @@ right  = 2.00cm]{geometry}
 	
 	\subsection{Use Cases and Examples}
 	%This section should pick up the significant points from the "Needs and Goals" and bring them in a relation with specific, real examples. S61
+	When big companies face the problem of Load Balancing, they have to focus on every aspect of their IT infrastructure. How would a business like \textit{Google} handle such a challenge? They have millions of request every day and need to have their service available 24/7. \\\\
+	Let's look at the website request "google.at".\\
+	\includegraphics[width=\textwidth]{img/example}
+ 	The DNS Server answers with a list of IP addresses of Load Balancers. In this example it gives three IP's back. The browser would use the first one by default. The order of the list varies at every call which is already kind of a load balancing because the traffic is distributed among the list of servers. At the server centers of big companies, the application is spread amongst the servers. So not every server can do everything. The Load Balancer can look into the request and then give it to the right switch, which has servers that can answer the request. The Load Balancers are the only one with a public IP. The servers that actually answer the request are in the private network. The way back to the client can either go through the Load Balancer or from the server to a NAT device an then to the client.
 	
 	\newpage
 	\section{Basic Concepts}
@@ -120,13 +119,32 @@ right  = 2.00cm]{geometry}
 	The OSI model contains seven layers and every single one provides it's own functionality and data.\\
 	If we take a closer look on the deeper layers like data link and network, which is representative for layer two and three, we can see that their header information contains IP and MAC addresses. These addresses can be used to decide where a package has to be send when it's revived by a switch.\\
 	This basic concept of routing packages builds the fundament for load balancing. It's about making a decision if, and where the data has to go. \cite{lb_SFC}
+	\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/OSI-TCP.png}
+		\caption{OSI-TCP Model \cite{iso_model}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	\\\\
+	\textbf{Layer-4 Loadbalancing}\\
+	Using the transport layer the load can be balanced from a router if a larger application network is initiated. Depending on the request the router can choose a responsible server a server with an appropriate hardware to process the job.
 	
-	\subsection{Higher Layered Distribution}
-	\textbf{Layer-7 Switching}\\
+	\newpage
+	\subsection{Application Layer}
 	Layer-7 switching, which is also known as application-level load balancing, describes a way of load distribution based on the content of the client request. Parsing the requests causes a high overhead on the balancer's side, so it's scalability is limited.\\
 	The appliances which are responsible to perform layer 7 load balancing are called Application Delivery Controllers (\gls{ADC}). \gls{ADC}'s presents a "virtual sever" to the world wide web (\gls{WWW}),accepts requests and distributes them to the right application server, determined over the use of application data.\\
 	\\
-	The knowledge about the requested data allows to serve specific types of content. A useful distribution of content are server- and client-side-scipts for example. \cite{AppLayerBalancing}
+	The knowledge about the requested data allows to serve specific types of content. A useful distribution of content are server- and client-side-scipts for example.\\
+	\\
+	Layer 7 load balancing offers additional features through the use of \gls{ADC}s. Based on the content type the balancer is able to decide which policies are applicable for the request and only executes the necessary ones. Further this can be a way to let only authorized users use specific servers or other hardware components. So application level balancing increases the efficiency of the application infrastructure because by investigating the content the jobs can be forwarded to a responsible server with an appropriate hardware performance. \cite{AppLayerBalancing}\\
+	\\
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.6\textwidth]{img/lSevenLB.png}
+		\caption{Application-level load balancing \cite{AppLayerBalancing}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}\\\\
 	
 	\newpage
 	\section{Advanced Concepts}
@@ -154,35 +172,98 @@ right  = 2.00cm]{geometry}
 	\\
 	\textbf{Current URL and Cookie Switching}\\
 	After our balancer has detected what server group to choose because of the requested URL we might need a way to stay in communication with the content server. Therefore a cookie-read method can be used whereby a cookie gets inserted from the server which can be read from the balancer.
-	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy.
+	If no cookie is found the load balancer detects the request as new session and returns to it's URL switching policy. \cite{lb_SFC}
+	
+	\subsection{SSL Termination}
+	SSL Termination which is also called SSL offload describes the ability of a balancer to establish a secure tunnel with the client. For this purpose an SSL certificate is required which can be self-generated or signed by a liable authority.\\ 
+	SSL termination is often used for Layer 7 trickery such as cookie insertion. \cite{AppLayerBalancing}
 	
 	\newpage
-	\subsection{Network-Address Translation}
-	\todo{This was the last section mhaidn wanted to edit}
+	\section{Principles of Web Distributed Systems Design}
+	\subsection{Contents}
+	A thing that should be thought of is the detention of data which is necessary for your web application. Most users assume a very short querying time when loading a page, therefore it's important to store the data in a place where a quick access is guaranteed.\\
+	\\
+	The Aoasabook Org. shows an accurate example based on a picture sharing platform like Flickr.\\
+	The challenge defines in offering a fast up- and download facility which is able to sustain a huge count of users. The plan is to distribute the process of delivering pictures by distributing the request handler from the real image server. This brings the advantage of creating a high scalability on the side of the image database.
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/appLayerImage1.jpg}
+		\caption{OSI-TCP Model \cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	\\\\
+	
+	\newpage
+	\section{Caches}
+	%scalable applicaton, serverseitiges cashen von sessons 
+	
+	Caches are a lot of faster than a normal database request. It takes advantage of a simple idea: recently requested data is likely to be requested again. A cache has limited amount of space but it is faster and contains recently accessed items. They can be used at all levels in architecture, but mostly at the front-end so they can answer quickly and don't get in the way of the lower levels. \\\\
+	This following graphic shows the connection between cash, server and database. \\\\
+	\includegraphics[width=0.7\textwidth]{img/cache1} \cite{cache} \\\\
+	The node checks its cache and sees if the data is there. If it isn't, it queries it from the database. Now this is great but for most applications there are multiple Request Nodes. \\\\
+	\includegraphics[width=0.5\textwidth]{img/cache2} \cite{cache} \\\\
+	As seen in the graphic above, we now have multiple servers with caches. But when the Load Balancer randomly distributes the request to the nodes, the same request will go to different nodes. Therefore we would have a lot of cache misses. To handle this problem we there are two strategies: Global and Distributed Caches. 
+	
+	\subsection{Global Cache}
+	In the global cache, all the nodes have the same cache. The nodes request the cache like it is a local one. The disadvantage of this method is, that a single cache gets overwhelmed by the numbers of requests and clients easier. However, in some architectures it can be very effective. For example with specialized hardware that make the cache very fast, or a fixed data sheet that is cached. \\\\
+	Following graphic shows how this looks works: \\\\
+	\includegraphics[width=0.6\textwidth]{img/global} \cite{cache} \\\\
+	When a request comes the node looks into the global cache. If it isn't there, the global cache retrieves it from the database. Note that the cache itself queries the data. \\\\
+	There is a second way to do this.\\\\
+	 \includegraphics[width=0.6\textwidth]{img/global1} \cite{cache} \\\\
+	Now the node request the data when it isn't in the cache and then it goes to the cache.\\\\
+	Mostly the first type is used, because if the nodes want the same data, they all query it from the database, instead of just the global cache.
+
+	\subsection{Distributed Cache}
+	In a distributed cache, every node has its own part of the cache. \textit{"...if a refrigerator acts as a cache to the grocery store, a distributed cache is like putting your food in several locations-your fridge, cupboards, and lunch box-convenient locations for retrieving snacks from, without a trip to the store."}\cite{cache} Usually the cache is divided up using a consistent hashing function. If the node looks for a certain piece of data it can find it through the hash key. In this case the nodes send the request to the node with the right cache.\\\\
+	 \includegraphics[width=0.6\textwidth]{img/distrib} \cite{cache} \\\\
+	An advantage of this method is that the distributed cache increases with ever node that is added to the pool.
+	
+	\newpage
+	\section{Queues}
+	
+	Queues are a way to effectively manage writes. When a system is simple, with minimal precessing loads and a small database, writing can be pretty fast.  However, when the system gets complex, writes may take a long time. The data may have to be written in several places or indexes which under a high load, can hurt performance. \\\\
+	In the graphic below is shown how it works without queues. \\\\
+	\includegraphics[width=0.6\textwidth]{img/queue1} \cite{cache} \\\\
+	The clients have to wait for the server to answer until they can continue doing something else. This is a synchronous behavior that tremendously degrades the clients performance. The solution to this problem are queues. They abstract the client's request from the actual work performed. \\\\
+	\includegraphics[width=0.6\textwidth]{img/queue2} \cite{cache} \\\\
+	As you can see, the requests are simply put in order as you would expect it form a queue. Then they are run by the server. Queues enable the client to work in an asynchronous manner, because they don't wait for the answer. They get a message acknowledging the task was received and then they can check periodically if the task has completed. Queues also give protection from server outages and failures. It is quite easy to create a robust queue that is able to retry request. 
+
+	 %There are quite a few open source queues like RabbitMQ, ActiveMQ, BeanstalkD, but some also use services like Zookeeper, or even data stores like Redis.
 	
 	\newpage
 	\section{Scheduling Algorithms}
+	%\subsection{Weighted Balance}
+	%Ways to guarantee a weighted balance in busy systems.
+	%\subsection{Priority}
+	%The meaning of priorities concerning the process of load balancing and how to route traffic to a preferred link, as long it's available.
+	%\subsection{Overflow}
+	%How to prevent traffic flow from slowing down when the connection runs out of available bandwidth.
+	%\subsection{Persistance}
+	%Eliminate session termination issue for HTTPS, E-banking, and other secure websites.
+	%\subsection{Round-Robin}
+	%A closer explanation to the scheduling procedure "Round Robin"
+		
 	\subsection{Round-Robin}
 	This is one of the simplest scheduling algorithms. The load distribution happens on every server equally. If this method is used all the servers should have the same capacity. If this is not the case it can mean that a less powerful server receives the next request even though it isn't able to manage it. This could case a overload on the weaker servers in the system. 
 	
-	\subsection{Weighed Robin-Round}
+	\subsection{Weighed Round-Round}
 	This scheduling algorithms is based on Robin Round. Additionally it has a weight distribution on each server. The administer gives the servers a certain weight and including this, the request are spread. This method takes in account that the servers may have different performance. 
-		
+	
 	\subsection{Last Connection}
-	The last two algorithms didn't include the length of the connections. If a weak server only gets a certain amount of weight but those requests stay longer, it still can have an overload. To avoid this problem this method gives the requests to the server with the least connections. "The server  in the cluster with the least number of active connections automatically receives the next  request. Basically, the same principle applies here as for the simple round robin: The servers  related to a Virtual Service should ideally have the similar resource capacities."\cite{schedu} However, in low traffic rates, it is now balanced out because the first server will be preferred. This happens due to the equality of the servers. The first sever will always be selected as long as he has continually active traffic. 
+	The last two algorithms didn't include the length of the connections. If a weak server only gets a certain amount of weight but those requests stay longer, it still can have an overload. To avoid this problem this method gives the requests to the server with the least connections. \textit{"The server  in the cluster with the least number of active connections automatically receives the next  request. Basically, the same principle applies here as for the simple round robin: The servers  related to a Virtual Service should ideally have the similar resource capacities."} \cite{schedu} However, in low traffic rates, it is now balanced out because the first server will be preferred. This happens due to the equality of the servers. The first sever will always be selected as long as he has continually active traffic. 
 	
 	\subsection{Least Connected Slow- Start Time}
 	This algorithm provides a "ramp-up time" for new servers in the system. When a new sever is added, a time can be configured in which it slowly gets increasingly more requests. This way the server doesn't get overloaded by a flood of connections upon startup. The downside of this method is that it takes a while until the full potential of a new server can be used. This can be a problem if you need to add power quickly. 
 	
 	\subsection{Weighed Least Connection}
-	This method is a combination of Last Connection and Weighted Robin Round algorithms. The Number of connection and the weight which the administer gave the servers are taking in account. The next request goes to the server with the smallest ratio between weight and connections. "The number of active connections combined with the various weights defined by the  administrator generally provides a very balanced utilization of the servers, as it employs the  advantages of both worlds. "\cite{schedu}
+	This method is a combination of Last Connection and Weighted Robin Round algorithms. The Number of connection and the weight which the administer gave the servers are taking in account. The next request goes to the server with the smallest ratio between weight and connections. \textit{"The number of active connections combined with the various weights defined by the  administrator generally provides a very balanced utilization of the servers, as it employs the  advantages of both worlds."}\cite{schedu}
 	
 	\subsection{Agent Based Adaptive Balancing}
-	Other then the methods above this contains an adaptive logic. It checks at regular intervals the servers for their traffic load. The Load Balancer periodically gets a file from the server in which their work load is stated. This works with HTTP GET function. "Each server machine should  provide a file that contains a numeric value in the range between 0 and 99 representing the  actual load on this server (0 = idle, 99 = overload,101 = failed,102 = administratively disabled)."\cite{schedu} With this information  including the weight each server has the Load Balancer can handle the traffic between the severs very sufficient. Although during a period of very low traffic the Load Balancer switches to Weighted Robin Round. This is because otherwise it would result in uncontrolled distribution.
+	Other then the methods above this contains an adaptive logic. It checks at regular intervals the servers for their traffic load. The Load Balancer periodically gets a file from the server in which their work load is stated. This works with HTTP GET function.\textit{"Each server machine should  provide a file that contains a numeric value in the range between 0 and 99 representing the  actual load on this server (0 = idle, 99 = overload,101 = failed,102 = administratively disabled)."}\cite{schedu} With this information  including the weight each server has the Load Balancer can handle the traffic between the severs very sufficient. Although during a period of very low traffic the Load Balancer switches to Weighted Robin Round. This is because otherwise it would result in uncontrolled distribution.
 	
 	\subsection{Multiple Queue Scheduling}
 	This method separates the queue into two different queues. This way the request is divided and can be worked on at the same time and later being put back together. For example a queue is cut into foreground and background task. Each of these queue can have their own scheduling algorithms. So the first one can use the Robin Round and second one First Come First Server. However, the two queues also have to be scheduled and put back together. 
-	
 	
 	%\subsection{Weighted Balance}
 	%Ways to guarantee a weighted balance in busy systems.
@@ -194,17 +275,6 @@ right  = 2.00cm]{geometry}
 	%Eliminate session termination issue for HTTPS, E-banking, and other secure websites.
 	%\subsection{Round-Robin}
 	%A closer explanation to the scheduling procedure "Round Robin"
-	
-	\newpage
-	\section{Caches}
-	\subsection{Definition}
-	Define what a cache is for when we talk about load balancing.
-	
-	\subsection{Types}
-	The different types of caches and their usage as well as benefits and disadvantages.
-	
-	\subsection{Deployment}
-	Examples and explanation how to deploy load distribution using caches.
 	
 	\newpage
 	\section{Problems}
