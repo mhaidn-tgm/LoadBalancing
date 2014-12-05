@@ -188,10 +188,25 @@ right  = 2.00cm]{geometry}
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/appLayerImage1.jpg}
-		\caption{OSI-TCP Model \cite{cache}}
+		\caption{Simplified architecture diagram for image hosting application \cite{cache}}
 		%\label{fig:MegaProxyProblem}
 	\end{figure}
-	\\\\
+	\section{Service}
+	Another big step in designing web applications is trying to picture every component, as it's own service. By decoupling functionality and clearly define interfaces the scalability gets raised and the ability to service and enlarge parts of the application is given. This is the reason why we talk about Service Oriented Architecture (\gls{SOA}).\\
+	Every single brick of the application has it's inner functional context and the interaction with everything outside is handled over an abstract interface like an public-facing \gls{API}.
+	\newpage
+	Now that the clear relations in our application network are defined we want it to take effect on our example.\\
+	Because most of the network intern rules define a 3:1 download-, upload-ratio the process of retrieving images and store them on the server can impact our requirement on a fast upload. To solve this issue the image request handler gets split into two fundamental parts of it's job namely reading and writing files.
+	We are splitting the image request handler into a read and write part which 
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=0.7\textwidth]{img/appLayerImage2.png}
+		\caption{Splitting out reads and writes \cite{cache}}
+		%\label{fig:MegaProxyProblem}
+	\end{figure}
+	The change in our application network allows us to change both parts independently from another, helps to make clear what happens in each step and enables an efficient way to troubleshoot bugs and problems in the application.\\
+	Another benefit is that we can now apply balancing and scheduling concepts on each part which fits best concerning the offered service.\\
+	For example we could cache the most popular loaded images to deliver them faster and even when one of the services is overloaded, it is taking no effect to the other.
 	
 	\newpage
 	\section{Caches}
@@ -280,16 +295,13 @@ right  = 2.00cm]{geometry}
 	\section{Problems}
 	\subsection{Mega Proxy Session}
 	The mega proxy session which is also known as mega proxy problem describes the issue of not being able to determine the correct source IP of an user. This can be caused when the client is located behind a proxy server which determines the client connection, changes the source IP to it's own address and opens a new connection to the actual destination IP.\\
-	Most ISPs and enterprises deploy proxy servers in their network to protect their client's identities but this can raise a session-persistence and therefore a load balancing problem on the balancer's side.\\
-	
-	\todo{Scan the image again!!}
+	Most ISPs and enterprises deploy proxy servers in their network to protect their client's identities but this can raise a session-persistence and therefore a load balancing problem on the balancer's side.
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=0.7\textwidth]{img/SessionPersistanceProblem.png}
-		\caption{Session persistence problem with megaproxy}
+		\caption{Session persistence problem with megaproxy \cite{lb_SFC}}
 		%\label{fig:MegaProxyProblem}
 	\end{figure}
-	
 	To avoid this problem the balancer can not longer rely on the source IP address to identify the user and has to adapt it's balancing concept.\\
 	The virtual sources of the proxies can be grouped to treat them as one. With this method the balancer is still able to maintain session persistence by directing all requests to a single real server. If this method is reasonable has to be decided considering the traffic scale in your network. On one hand it solves the problem of session persistence but on the other hand it can mess up your load distribution concept because all requests from the proxy network get forwarded to the same server.
 	
@@ -302,6 +314,14 @@ right  = 2.00cm]{geometry}
 	\newglossaryentry{WWW} {
 		name= WWW,
 		description= {World Wide Web}
+	}
+	\newglossaryentry{SOA} {
+		name= SOA,
+		description= {Service Oriented Architecture}
+	}
+	\newglossaryentry{API} {
+		name= API,
+		description= {Application Programming Interface}
 	}
 	\printglossaries
 	

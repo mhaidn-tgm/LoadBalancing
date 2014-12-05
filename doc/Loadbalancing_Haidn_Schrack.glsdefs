@@ -58,3 +58,63 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{SOA}{}%
+{%
+\gls@defglossaryentry{SOA}%
+{%
+name={SOA},%
+sort={SOA},%
+type={main},%
+first={SOA},%
+firstplural={SOAs},%
+text={SOA},%
+plural={SOAs},%
+description={Service Oriented Application},%
+descriptionplural={Service Oriented Application},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{API}{}%
+{%
+\gls@defglossaryentry{API}%
+{%
+name={API},%
+sort={API},%
+type={main},%
+first={API},%
+firstplural={APIs},%
+text={API},%
+plural={APIs},%
+description={Application Programming Interface},%
+descriptionplural={Application Programming Interface},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
